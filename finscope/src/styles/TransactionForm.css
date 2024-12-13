@@ -1,0 +1,115 @@
+/* TransactionForm.css */
+
+@import url('./global.css');
+
+.transaction-form {
+  max-width: 720px; /* Встановлено 60% ширини головного контейнера */
+  margin: 5rem auto; /* Додано фіксований відступ від Navbar */
+  padding: 2rem;
+  border-radius: var(--input-border-radius);
+  animation: fadeIn 0.5s ease-in-out;
+  text-align: center; /* Центрування тексту */
+  width: 100%; /* Уніфікована ширина */
+  background-color: var(--dark-element); /* Уніфікація кольору фону */
+  color: var(--text-light); /* Уніфікація текстового кольору */
+}
+
+body.dark-mode .transaction-form {
+  background-color: var(--light-element);
+  color: var(--text-dark);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Адаптивність групи */
+}
+
+label {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500; /* Виділення тексту */
+  color: var(--text-light);
+}
+
+body.dark-mode label {
+  color: var(--text-dark);
+}
+
+input[type="number"],
+input[type="text"],
+input[type="date"],
+select {
+  width: 100%; /* Забезпечує адаптивність полів */
+  box-sizing: border-box; /* Для вирівнювання */
+  border: 1px solid var(--input-border-color); /* Стилізація бордера */
+  border-radius: var(--input-border-radius); /* Округлення кутів */
+  padding: var(--input-padding); /* Відступи всередині */
+  background-color: var(--dark-element);
+  color: var(--text-light);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Плавний ефект */
+}
+
+body.dark-mode input[type="number"],
+body.dark-mode input[type="text"],
+body.dark-mode input[type="date"],
+body.dark-mode select {
+  background-color: var(--light-element);
+  color: var(--text-dark);
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus,
+input[type="date"]:focus,
+select:focus {
+  border-color: var(--input-focus-border-color); /* Активний бордер */
+  box-shadow: 0 0 5px var(--primary-color); /* Підсвічування */
+  outline: none; /* Забираємо стандартний бордер */
+}
+
+select {
+  cursor: pointer;
+}
+
+.submit-button {
+  width: 100%; /* Уніфікована ширина кнопки */
+  max-width: 200px; /* Обмеження ширини */
+  margin: 0 auto; /* Центрування кнопки */
+  padding: var(--button-padding); /* Додано уніфіковані відступи */
+  font-size: var(--button-font-size); /* Уніфікація розміру тексту */
+  font-weight: 600; /* Виділення тексту */
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--input-border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-3px);
+}
+
+body.dark-mode .submit-button {
+  background-color: var(--secondary-color);
+  color: var(--dark-background);
+}
+
+@media (max-width: 768px) {
+  .transaction-form {
+    padding: 1.5rem;
+    margin: 1rem auto; /* Зменшені відступи для мобільних */
+  }
+
+  .submit-button {
+    padding: 0.6rem 1rem;
+  }
+}
+
+/* Fade-in animation for smoother loading */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}

@@ -1,0 +1,182 @@
+/* Settings.css */
+
+@import url('./global.css');
+
+.settings-container {
+  max-width: 720px; /* Встановлено 60% ширини головного контейнера */
+  margin: 5rem auto; /* Додано фіксований відступ від Navbar */
+  padding: 2rem;
+  border-radius: var(--input-border-radius);
+  animation: fadeIn 0.5s ease-in-out;
+  transition: transform 0.3s ease;
+  width: 100%; /* Уніфікована ширина */
+  background-color: var(--dark-element);
+  color: var(--text-light);
+  position: relative; /* Додано для впливу на внутрішні елементи */
+}
+
+body.dark-mode .settings-container {
+  background-color: var(--light-element);
+  color: var(--text-dark);
+}
+
+.settings-container:hover {
+  transform: scale(1.01);
+}
+
+h2 {
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+.profile-section,
+.password-section,
+.theme-section {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Центрування секцій */
+  width: 100%;
+}
+
+h3 {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+label {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+body.dark-mode label {
+  color: var(--text-dark);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: var(--input-padding);
+  border: 1px solid var(--input-border-color);
+  border-radius: var(--input-border-radius);
+  background-color: var(--dark-element);
+  color: var(--text-light);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus {
+  border-color: var(--input-focus-border-color);
+  outline: none;
+  box-shadow: 0 0 5px var(--primary-color);
+}
+
+body.dark-mode input[type="text"],
+body.dark-mode input[type="email"],
+body.dark-mode input[type="password"],
+body.dark-mode select {
+  background-color: var(--light-element);
+  color: var(--text-dark);
+  border-color: var(--input-border-color);
+}
+
+.submit-button {
+  padding: var(--button-padding);
+  font-size: var(--button-font-size);
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--input-border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-3px);
+}
+
+body.dark-mode .submit-button {
+  background-color: var(--secondary-color);
+  color: var(--dark-background);
+}
+
+.theme-toggle-btn {
+  position: relative; /* Виправлено з absolute */
+  margin: 1rem auto; /* Центрування кнопки */
+  padding: var(--button-padding);
+  font-size: var(--button-font-size);
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: var(--input-border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+body.dark-mode .theme-toggle-btn {
+  background-color: var(--light-element);
+  color: var(--text-dark);
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+.theme-select {
+  width: 100%; /* Вирівнювання з іншими елементами */
+  max-width: 100%;
+  padding: var(--input-padding);
+  border-radius: var(--input-border-radius);
+  border: 1px solid var(--input-border-color);
+  background-color: var(--dark-element);
+  color: var(--text-light);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+body.dark-mode .theme-select {
+  background-color: var(--light-element);
+  color: var(--text-dark);
+}
+
+@media (max-width: 768px) {
+  .settings-container {
+    padding: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .submit-button {
+    padding: 0.6rem 1rem;
+  }
+
+  .theme-toggle-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    margin: 1rem auto;
+  }
+}
+
+/* Fade-in animation for smoother loading */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}

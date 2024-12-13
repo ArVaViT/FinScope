@@ -1,0 +1,96 @@
+/* index.css */
+
+/* Основні стилі винесені у global.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: var(--dark-background);
+  color: var(--text-light);
+  font-family: var(--font-family);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+  background-color: var(--light-background);
+  color: var(--text-dark);
+}
+
+h1 {
+  font-size: 3.2rem;
+  line-height: 1.1;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--input-padding);
+  background-color: var(--dark-element);
+  color: var(--text-light);
+  box-shadow: var(--button-hover-shadow);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .header {
+  background-color: var(--light-element);
+  color: var(--text-dark);
+}
+
+.footer {
+  margin-top: auto;
+  padding: var(--input-padding);
+  text-align: center;
+  background-color: var(--dark-element);
+  color: var(--text-light);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .footer {
+  background-color: var(--light-element);
+  color: var(--text-dark);
+}
+
+.main-content {
+  width: 66.67%;
+  padding: 2rem;
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: var(--input-border-radius);
+  box-shadow: var(--button-hover-shadow);
+  background-color: var(--dark-element);
+  color: var(--text-light);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .main-content {
+  background-color: var(--light-element);
+  color: var(--text-dark);
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 0 1rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .header {
+    flex-direction: column;
+  }
+
+  .main-content {
+    padding: 1rem;
+    width: 90%;
+  }
+}
