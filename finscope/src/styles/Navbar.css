@@ -7,13 +7,13 @@
   background-color: var(--dark-element);
   padding: var(--input-padding);
   box-shadow: var(--button-hover-shadow);
-  position: fixed; /* Фіксація навбару над контентом */
+  position: fixed;
   top: 0;
   z-index: 1000;
   width: 100%;
   margin: 0;
-  min-height: 4rem; /* Додано для стабільної висоти */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Плавний перехід для теми */
+  min-height: 4.5rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.dark-mode .navbar {
@@ -25,7 +25,7 @@ body.dark-mode .navbar {
   font-size: 1.5rem;
   font-weight: bold;
   color: var(--text-light);
-  text-transform: uppercase; /* Додано для стилю */
+  text-transform: uppercase;
   transition: color 0.3s ease;
 }
 
@@ -35,18 +35,18 @@ body.dark-mode .navbar-logo {
 
 .navbar-menu {
   display: flex;
-  gap: 2rem; /* Збільшено комфортний відступ між кнопками */
-  flex-wrap: nowrap; /* Забороняє перенесення кнопок */
-  justify-content: center; /* Центрування кнопок */
+  gap: 2rem;
+  flex-wrap: nowrap;
+  justify-content: center;
   width: 100%;
-  transition: gap 0.3s ease; /* Додано плавність для відступів */
+  transition: gap 0.3s ease;
 }
 
 .navbar-link {
   color: var(--text-light);
   text-decoration: none;
   font-size: 1rem;
-  font-weight: 500; /* Виділення тексту */
+  font-weight: 500;
   transition: color 0.3s ease-in-out;
   white-space: nowrap;
 }
@@ -59,84 +59,26 @@ body.dark-mode .navbar-link {
   color: var(--primary-color);
 }
 
-.navbar-theme-toggle {
-  margin-left: auto; /* Переносить кнопку Light Mode вправо */
-  display: flex;
-  align-items: center;
-}
-
-.theme-toggle-btn {
-  background-color: var(--primary-color);
-  color: var(--text-light);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: var(--input-border-radius);
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  margin-left: auto;
-  align-self: center; /* Центрує кнопку у flex-контейнері */
-}
-
-body.dark-mode .theme-toggle-btn {
-  background-color: var(--light-element);
-  color: var(--text-dark);
-}
-
-.theme-toggle-btn:hover {
-  background-color: var(--secondary-color);
-}
-
-/* Dropdown menu (якщо потрібен) */
-.navbar-dropdown {
-  display: none;
-  flex-direction: column;
-  background-color: var(--dark-element);
-  position: absolute;
-  top: 100%;
-  left: 0;
-  box-shadow: var(--button-hover-shadow);
-  transition: background-color 0.3s ease;
-}
-
-body.dark-mode .navbar-dropdown {
-  background-color: var(--light-element);
-}
-
-.navbar-dropdown a {
-  padding: 0.5rem 1rem;
-  white-space: nowrap;
-  transition: color 0.3s ease;
-}
-
-body.dark-mode .navbar-dropdown a {
-  color: var(--text-dark);
-}
-
-.navbar-links:hover .navbar-dropdown {
-  display: flex;
-}
-
-/* Mobile adjustments */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
     align-items: center;
-    padding: 0.5rem 1rem; /* Зменшено для мобільних */
+    padding: 0.5rem 1rem;
   }
 
   .navbar-logo {
-    margin-bottom: 0.5rem; /* Додано для розділення лого */
+    margin-bottom: 0.5rem;
   }
 
   .navbar-menu {
     flex-direction: row;
-    gap: 1.5rem; /* Відступи адаптовані для мобільних */
-    width: 100%; /* Забезпечує адаптацію на мобільних */
-    justify-content: center; /* Центрування кнопок */
+    gap: 1.5rem;
+    width: 100%;
+    justify-content: center;
   }
 
   .navbar-link {
-    font-size: 0.9rem; /* Зменшено розмір для мобільних */
+    font-size: 0.9rem;
   }
 
   .navbar-toggle {
@@ -165,7 +107,6 @@ body.dark-mode .navbar-dropdown a {
   }
 }
 
-/* Accessibility improvements */
 .navbar-menu .navbar-link:focus {
   outline: 2px dashed var(--primary-color);
   outline-offset: 2px;

@@ -1,58 +1,32 @@
 /* Dashboard.css */
 
-@import url('./global.css');
-
 .dashboard-container {
-  padding: 2rem;
-  max-width: 720px; /* Встановлено 60% ширини головного контейнера */
-  margin: 5rem auto; /* Додано відступ від Navbar */
-  background-color: var(--dark-background);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 0.5s ease-in-out;
-  text-align: center; /* Центрування тексту для вирівнювання */
-  min-height: 80vh; /* Забезпечує стабільну висоту */
-  width: 100%; /* Забезпечення однакової ширини */
-}
-
-.dashboard-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.dashboard-header h1 {
-  font-size: 2.5rem;
-  color: var(--primary-color);
-  font-weight: bold;
-}
-
-.dashboard-header p {
-  color: var(--text-light);
-  font-size: 1.2rem;
-  opacity: 0.8;
-}
-
-.statistics {
+  padding: var(--container-padding);
+  margin: calc(var(--navbar-height) + 1rem) auto;
+  border-radius: var(--input-border-radius);
+  background-color: var(--light-element);
+  transition: all 0.3s ease-in-out;
+  max-width: var(--container-max-width);
   display: flex;
-  justify-content: space-around;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+body.dark-mode .dashboard-container {
+  background-color: var(--dark-element);
+  color: var(--text-light);
 }
 
 .stat-card {
+  padding: 1rem;
   background-color: var(--dark-element);
-  padding: 1.5rem;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 300px; /* Встановлено однаковий розмір для карток */
+  margin: 1rem auto;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .stat-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--button-hover-shadow);
 }
 
 .stat-card h2 {
@@ -79,15 +53,15 @@
   background-color: var(--dark-element);
   padding: 1.5rem;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--button-hover-shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 100%; /* Додано для адаптивності */
-  max-width: 500px; /* Обмеження ширини для графіків */
+  width: 100%;
+  max-width: 500px;
 }
 
 .chart-container:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--button-hover-shadow);
 }
 
 .chart-container h3 {
@@ -101,7 +75,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--dark-background);
+  background-color: var(--dark-element);
   border-radius: 8px;
   color: var(--text-light);
   font-size: 1rem;
@@ -120,11 +94,10 @@
 
   .chart-container {
     width: 100%;
-    max-width: 100%; /* Забезпечення повної ширини для мобільних */
+    max-width: 100%;
   }
 }
 
-/* Fade-in animation for smoother loading */
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }

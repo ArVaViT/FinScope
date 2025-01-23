@@ -14,43 +14,19 @@ const Settings = ({ onUpdateProfile, onChangePassword, isDarkMode, toggleDarkMod
   });
   const [message, setMessage] = useState('');
 
-  const handleProfileChange = ({ target: { name, value } }) => {
-    setProfile((prevProfile) => ({
-      ...prevProfile,
-      [name]: value,
-    }));
+  const handleInputChange = (e, stateUpdater) => {
+    const { name, value } = e.target;
+    stateUpdater((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handlePasswordChange = ({ target: { name, value } }) => {
-    setPassword((prevPassword) => ({
-      ...prevPassword,
-      [name]: value,
-    }));
-  };
-
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  const handleProfileSubmit = (e) => {
+  const handleSubmit = (e, validator, state, action, successMessage) => {
     e.preventDefault();
-    if (!validateEmail(profile.email)) {
-      setMessage('Invalid email address.');
+    if (!validator()) {
+      setMessage('Please fill out all fields correctly.');
       return;
     }
-    onUpdateProfile(profile);
-    setMessage('Profile updated successfully!');
-  };
-
-  const handlePasswordSubmit = (e) => {
-    e.preventDefault();
-    if (!password.currentPassword || !password.newPassword) {
-      setMessage('Both password fields are required.');
-      return;
-    }
-    onChangePassword(password);
-    setMessage('Password changed successfully!');
+    action(state);
+    setMessage(successMessage);
   };
 
   return (
@@ -63,7 +39,18 @@ const Settings = ({ onUpdateProfile, onChangePassword, isDarkMode, toggleDarkMod
 
       <section className="profile-section">
         <h3>Update Profile</h3>
-        <form onSubmit={handleProfileSubmit} className="profile-form">
+        <form
+          onSubmit={(e) =>
+            handleSubmit(
+              e,
+              () => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(profile.email),
+              profile,
+              onUpdateProfile,
+              'Profile updated successfully!'
+            )
+          }
+          className="profile-form"
+        >
           <div className="form-group">
             <label htmlFor="username">Username:</label>
             <input
@@ -71,7 +58,8 @@ const Settings = ({ onUpdateProfile, onChangePassword, isDarkMode, toggleDarkMod
               id="username"
               name="username"
               value={profile.username}
-              onChange={handleProfileChange}
+              onChange={(e) => handleInputChange(e, setProfile)}
+              placeholder="Enter username"
               required
             />
           </div>
@@ -82,7 +70,8 @@ const Settings = ({ onUpdateProfile, onChangePassword, isDarkMode, toggleDarkMod
               id="email"
               name="email"
               value={profile.email}
-              onChange={handleProfileChange}
+              onChange={(e) => handleInputChange(e, setProfile)}
+              placeholder="Enter email"
               required
             />
           </div>
@@ -94,7 +83,18 @@ const Settings = ({ onUpdateProfile, onChangePassword, isDarkMode, toggleDarkMod
 
       <section className="password-section">
         <h3>Change Password</h3>
-        <form onSubmit={handlePasswordSubmit} className="password-form">
+        <form
+          onSubmit={(e) =>
+            handleSubmit(
+              e,
+              () => password.currentPassword && password.newPassword,
+              password,
+              onChangePassword,
+              'Password changed successfully!'
+            )
+          }
+          className="password-form"
+        >
           <div className="form-group">
             <label htmlFor="currentPassword">Current Password:</label>
             <input
@@ -102,7 +102,8 @@ const Settings = ({ onUpdateProfile, onChangePassword, isDarkMode, toggleDarkMod
               id="currentPassword"
               name="currentPassword"
               value={password.currentPassword}
-              onChange={handlePasswordChange}
+              onChange={(e) => handleInputChange(e, setPassword)}
+              placeholder="Enter current password"
               required
             />
           </div>
@@ -113,7 +114,8 @@ const Settings = ({ onUpdateProfile, onChangePassword, isDarkMode, toggleDarkMod
               id="newPassword"
               name="newPassword"
               value={password.newPassword}
-              onChange={handlePasswordChange}
+              onChange={(e) => handleInputChange(e, setPassword)}
+              placeholder="Enter new password"
               required
             />
           </div>
@@ -128,8 +130,19 @@ const Settings = ({ onUpdateProfile, onChangePassword, isDarkMode, toggleDarkMod
         <div className="form-group">
           <label htmlFor="theme">Choose Theme:</label>
           <button
-            onClick={toggleDarkMode}
+            onClick={() => {
+              const selection = window.getSelection();
+              if (selection && selection.rangeCount > 0) {
+                try {
+                  selection.removeAllRanges();
+                } catch (error) {
+                  console.warn('Error clearing selection:', error);
+                }
+              }
+              toggleDarkMode();
+            }}
             className="theme-toggle-btn"
+            aria-label="Toggle theme"
           >
             {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           </button>

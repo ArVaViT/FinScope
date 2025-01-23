@@ -28,16 +28,13 @@ ChartContainer.propTypes = {
 };
 
 const Dashboard = ({ stats = [], charts = [] }) => {
-  const hasStats = stats && stats.length > 0;
-  const hasCharts = charts && charts.length > 0;
-
   return (
-    <div className="dashboard-container">
+    <>
       <h1 className="dashboard-title">Dashboard</h1>
       <p className="dashboard-overview">Overview of your financial activity</p>
 
       <div className="statistics">
-        {hasStats ? (
+        {stats.length > 0 ? (
           stats.map((stat, index) => (
             <StatCard key={index} title={stat.title} value={stat.value} />
           ))
@@ -47,7 +44,7 @@ const Dashboard = ({ stats = [], charts = [] }) => {
       </div>
 
       <div className="charts">
-        {hasCharts ? (
+        {charts.length > 0 ? (
           charts.map((chart, index) => (
             <ChartContainer key={index} title={chart.title} content={chart.content} />
           ))
@@ -55,7 +52,7 @@ const Dashboard = ({ stats = [], charts = [] }) => {
           <p className="no-charts">No charts available at the moment.</p>
         )}
       </div>
-    </div>
+    </>
   );
 };
 

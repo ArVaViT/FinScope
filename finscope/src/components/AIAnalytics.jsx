@@ -25,6 +25,19 @@ const AIAnalytics = ({ initialData = null, fetchPredictions }) => {
     fetchData();
   }, [initialData, fetchPredictions]);
 
+  const renderExpenseBreakdown = (expenseBreakdown) => (
+    <div className="expense-breakdown">
+      <h3>Expense Breakdown</h3>
+      <ul>
+        {expenseBreakdown.map((item, index) => (
+          <li key={index} className="expense-item">
+            <span>{item.category}</span>: <span>${item.amount}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+
   if (loading) {
     return <p className="loading">Loading analytics...</p>;
   }
@@ -34,7 +47,7 @@ const AIAnalytics = ({ initialData = null, fetchPredictions }) => {
   }
 
   return (
-    <div className={`ai-analytics-container ${analyticsData ? '' : 'no-data'}`}>
+    <div className={`ai-analytics-container main-content`}>
       <h2>AI Analytics</h2>
       {analyticsData && analyticsData.expenseBreakdown ? (
         <div className="analytics-content">
@@ -43,17 +56,10 @@ const AIAnalytics = ({ initialData = null, fetchPredictions }) => {
             <p><strong>Total Expenses:</strong> ${analyticsData.totalExpenses || 0}</p>
             <p><strong>Savings:</strong> ${analyticsData.savings || 0}</p>
           </div>
-          <div className="expense-breakdown">
-            <h3>Expense Breakdown</h3>
-            <ul>
-              {analyticsData.expenseBreakdown.map((item, index) => (
-                <li key={index}>{item.category}: ${item.amount}</li>
-              ))}
-            </ul>
-          </div>
+          {renderExpenseBreakdown(analyticsData.expenseBreakdown)}
         </div>
       ) : (
-        <p className="no-data">No analytics data available.</p>
+        <p className="no-data">No analytics data available. Please try refreshing or check your network connection.</p>
       )}
     </div>
   );

@@ -3,15 +3,15 @@
 @import url('./global.css');
 
 .notifications-container {
-  max-width: 720px; /* Встановлено 60% ширини головного контейнера */
-  margin: 5rem auto; /* Додано фіксований відступ від Navbar */
+  max-width: 720px;
+  margin: 5rem auto;
   padding: 2rem;
-  background-color: var(--dark-background);
+  background-color: var(--dark-element);
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   animation: fadeIn 0.5s ease-in-out;
   transition: transform 0.3s ease;
-  width: 100%; /* Уніфікована ширина */
+  width: 100%;
 }
 
 .notifications-container:hover {
@@ -40,7 +40,7 @@ h2 {
 }
 
 .notification-item {
-  padding: 1.5rem; /* Збільшено для зручності читання */
+  padding: 1.5rem;
   border-radius: 8px;
   margin-bottom: 1.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -56,37 +56,35 @@ h2 {
 }
 
 .notification-item.warning {
-  background-color: #ffe680; /* Жовтий для попереджень */
-  color: #664d00; /* Темно-жовтий текст */
-  border-left: 4px solid #ffcc00; /* Насичений жовтий для акценту */
+  background-color: #ffe680;
+  color: #664d00;
+  border-left: 4px solid #ffcc00;
 }
 
 .notification-item.info {
-  background-color: #d9edf7; /* Світло-синій для інформації */
-  color: #31708f; /* Темно-синій текст */
-  border-left: 4px solid #5bc0de; /* Синій акцент */
+  background-color: #d9edf7;
+  color: #31708f;
+  border-left: 4px solid #5bc0de;
 }
 
 .notification-item.alert {
-  background-color: #f2dede; /* Світло-червоний для помилок */
-  color: #a94442; /* Темно-червоний текст */
-  border-left: 4px solid #ebccd1; /* Насичений червоний акцент */
+  background-color: #f2dede;
+  color: #a94442;
+  border-left: 4px solid #ebccd1;
 }
 
-/* Media query for mobile responsiveness */
 @media (max-width: 768px) {
   .notifications-container {
     padding: 1.5rem;
   }
   .notification-item {
     font-size: 0.9rem;
-    padding: 1rem; /* Додано для кращого вигляду на мобільних */
-    flex-direction: column; /* Додано для мобільних */
+    padding: 1rem;
+    flex-direction: column;
     align-items: flex-start;
   }
 }
 
-/* Fade-in animation for smoother loading */
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }

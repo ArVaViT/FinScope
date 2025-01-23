@@ -3,15 +3,15 @@
 @import url('./global.css');
 
 .transaction-form {
-  max-width: 720px; /* Встановлено 60% ширини головного контейнера */
-  margin: 5rem auto; /* Додано фіксований відступ від Navbar */
+  max-width: 720px;
+  margin: 5rem auto;
   padding: 2rem;
   border-radius: var(--input-border-radius);
   animation: fadeIn 0.5s ease-in-out;
-  text-align: center; /* Центрування тексту */
-  width: 100%; /* Уніфікована ширина */
-  background-color: var(--dark-element); /* Уніфікація кольору фону */
-  color: var(--text-light); /* Уніфікація текстового кольору */
+  text-align: center;
+  width: 100%;
+  background-color: var(--dark-element);
+  color: var(--text-light);
 }
 
 body.dark-mode .transaction-form {
@@ -23,13 +23,13 @@ body.dark-mode .transaction-form {
   margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
-  width: 100%; /* Адаптивність групи */
+  width: 100%;
 }
 
 label {
   margin-bottom: 0.5rem;
   font-size: 1rem;
-  font-weight: 500; /* Виділення тексту */
+  font-weight: 500;
   color: var(--text-light);
 }
 
@@ -41,14 +41,14 @@ input[type="number"],
 input[type="text"],
 input[type="date"],
 select {
-  width: 100%; /* Забезпечує адаптивність полів */
-  box-sizing: border-box; /* Для вирівнювання */
-  border: 1px solid var(--input-border-color); /* Стилізація бордера */
-  border-radius: var(--input-border-radius); /* Округлення кутів */
-  padding: var(--input-padding); /* Відступи всередині */
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--input-border-color);
+  border-radius: var(--input-border-radius);
+  padding: var(--input-padding);
   background-color: var(--dark-element);
   color: var(--text-light);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Плавний ефект */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 body.dark-mode input[type="number"],
@@ -63,9 +63,9 @@ input[type="number"]:focus,
 input[type="text"]:focus,
 input[type="date"]:focus,
 select:focus {
-  border-color: var(--input-focus-border-color); /* Активний бордер */
-  box-shadow: 0 0 5px var(--primary-color); /* Підсвічування */
-  outline: none; /* Забираємо стандартний бордер */
+  border-color: var(--input-focus-border-color);
+  box-shadow: 0 0 5px var(--primary-color);
+  outline: none;
 }
 
 select {
@@ -73,12 +73,12 @@ select {
 }
 
 .submit-button {
-  width: 100%; /* Уніфікована ширина кнопки */
-  max-width: 200px; /* Обмеження ширини */
-  margin: 0 auto; /* Центрування кнопки */
-  padding: var(--button-padding); /* Додано уніфіковані відступи */
-  font-size: var(--button-font-size); /* Уніфікація розміру тексту */
-  font-weight: 600; /* Виділення тексту */
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto;
+  padding: var(--button-padding);
+  font-size: var(--button-font-size);
+  font-weight: 600;
   background-color: var(--primary-color);
   color: var(--text-light);
   border: none;
@@ -100,7 +100,7 @@ body.dark-mode .submit-button {
 @media (max-width: 768px) {
   .transaction-form {
     padding: 1.5rem;
-    margin: 1rem auto; /* Зменшені відступи для мобільних */
+    margin: 1rem auto;
   }
 
   .submit-button {

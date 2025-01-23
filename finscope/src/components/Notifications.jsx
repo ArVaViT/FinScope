@@ -10,8 +10,8 @@ const Notifications = ({ notifications }) => {
       {notifications.length > 0 ? (
         <ul className="notifications-list">
           {notifications.map((notification, index) => (
-            <li 
-              key={index} 
+            <li
+              key={index}
               className={`notification-item ${notification.type || 'info'}`}
               role="alert"
               aria-label={`${notification.type || 'info'} notification`}

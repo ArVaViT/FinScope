@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../styles/Navbar.css';
 
-const Navbar = ({ links, logoText, isDarkMode, toggleDarkMode }) => {
+const Navbar = ({ links, logoText, isDarkMode }) => {
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${isDarkMode ? 'dark-mode' : 'light-mode'}`} aria-label="Main Navigation">
       <div className="navbar-container">
         <a href="/" className="navbar-logo">
           {logoText}
@@ -19,14 +19,6 @@ const Navbar = ({ links, logoText, isDarkMode, toggleDarkMode }) => {
           ))}
         </ul>
       </div>
-      <div className="navbar-theme-toggle">
-        <button
-          className="theme-toggle-btn"
-          onClick={toggleDarkMode}
-        >
-          {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-        </button>
-      </div>
     </nav>
   );
 };
@@ -40,7 +32,6 @@ Navbar.propTypes = {
   ).isRequired,
   logoText: PropTypes.string.isRequired,
   isDarkMode: PropTypes.bool.isRequired,
-  toggleDarkMode: PropTypes.func.isRequired,
 };
 
 export default Navbar;

@@ -3,16 +3,16 @@
 @import url('./global.css');
 
 .settings-container {
-  max-width: 720px; /* Встановлено 60% ширини головного контейнера */
-  margin: 5rem auto; /* Додано фіксований відступ від Navbar */
+  max-width: 720px;
+  margin: 5rem auto;
   padding: 2rem;
   border-radius: var(--input-border-radius);
   animation: fadeIn 0.5s ease-in-out;
   transition: transform 0.3s ease;
-  width: 100%; /* Уніфікована ширина */
+  width: 100%;
   background-color: var(--dark-element);
   color: var(--text-light);
-  position: relative; /* Додано для впливу на внутрішні елементи */
+  position: relative;
 }
 
 body.dark-mode .settings-container {
@@ -37,7 +37,7 @@ h2 {
   margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Центрування секцій */
+  align-items: center;
   width: 100%;
 }
 
@@ -118,8 +118,8 @@ body.dark-mode .submit-button {
 }
 
 .theme-toggle-btn {
-  position: relative; /* Виправлено з absolute */
-  margin: 1rem auto; /* Центрування кнопки */
+  position: relative;
+  margin: 1rem auto;
   padding: var(--button-padding);
   font-size: var(--button-font-size);
   background-color: var(--primary-color);
@@ -140,7 +140,7 @@ body.dark-mode .theme-toggle-btn {
 }
 
 .theme-select {
-  width: 100%; /* Вирівнювання з іншими елементами */
+  width: 100%;
   max-width: 100%;
   padding: var(--input-padding);
   border-radius: var(--input-border-radius);

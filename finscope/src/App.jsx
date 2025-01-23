@@ -6,8 +6,7 @@ import TransactionForm from './components/TransactionForm';
 import Settings from './components/Settings';
 import AIAnalytics from './components/AIAnalytics';
 import Notifications from './components/Notifications';
-import './styles/global.css';
-import './styles/App.css'; 
+import './styles/global.css'; 
 
 const App = () => {
   const [transactions, setTransactions] = useState([]);
@@ -20,7 +19,10 @@ const App = () => {
 
   useEffect(() => {
     localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode));
-    document.body.className = isDarkMode ? 'dark-mode' : 'light-mode';
+    if (document.body) {
+      document.body.classList.remove(isDarkMode ? 'light-mode' : 'dark-mode');
+      document.body.classList.add(isDarkMode ? 'dark-mode' : 'light-mode');
+    }
   }, [isDarkMode]);
 
   const toggleDarkMode = useCallback(() => {
@@ -116,3 +118,4 @@ const App = () => {
 };
 
 export default App;
+

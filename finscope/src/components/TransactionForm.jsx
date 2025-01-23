@@ -39,7 +39,10 @@ const TransactionForm = ({ onAddTransaction }) => {
         position: toast.POSITION.TOP_RIGHT,
       });
     } else {
-      onAddTransaction(transaction);
+      onAddTransaction({
+        ...transaction,
+        amount: parseFloat(transaction.amount).toFixed(2),
+      });
       toast.success('Transaction added successfully!', {
         position: toast.POSITION.TOP_RIGHT,
       });

@@ -2,13 +2,13 @@
 
 /* Theme Variables */
 :root {
+  --navbar-height: 4.5rem;
   --dark-background: #1a1a1a;
   --light-background: #ffffff;
   --text-light: #ffffff;
   --text-dark: #213547;
   --primary-color: #646cff;
   --secondary-color: #535bf2;
-  --alert-color: #e74c3c;
   --dark-element: #2a2a2a;
   --light-element: #f5f5f5;
   --font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -19,7 +19,9 @@
   --button-padding: 0.8rem 1.5rem;
   --button-font-size: 1rem;
   --button-hover-transform: translateY(-3px);
-  --button-hover-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  --button-hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  --container-max-width: 1200px;
+  --container-padding: 1rem;
 }
 
 /* Body */
@@ -57,6 +59,9 @@ button {
   color: var(--text-light);
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 100%;
+  max-width: 200px;
+  border-radius: var(--input-border-radius);
 }
 
 button:hover {
@@ -101,7 +106,6 @@ body.dark-mode input {
 .card {
   padding: 1rem;
   background-color: var(--dark-element);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 1rem auto;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -122,9 +126,43 @@ body.dark-mode .card {
 }
 
 .container {
-  padding: 1rem;
+  padding: var(--container-padding);
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: var(--container-max-width);
+  box-shadow: none;
+}
+
+/* Standard Content Layout */
+.main-content {
+  margin-top: var(--navbar-height);
+  margin: 3rem auto;
+  padding: var(--container-padding);
+  max-width: 66.67%;
+  color: var(--text-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: var(--input-border-radius);
+  box-shadow: var(--button-hover-shadow);
+  background-color: var(--dark-element);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+}
+
+body.dark-mode .main-content {
+  background-color: var(--light-element);
+  color: var(--text-dark);
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 0 1rem;
+  }
+
+  .main-content {
+    padding: 1rem;
+    width: 90%;
+  }
 }
 
 /* Analytics Specific */
@@ -162,5 +200,3 @@ body.dark-mode .form button {
   background-color: var(--secondary-color);
   color: var(--dark-background);
 }
-
-/* Removed redundant classes and ensured global alignment */
