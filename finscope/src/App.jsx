@@ -19,10 +19,7 @@ const App = () => {
 
   useEffect(() => {
     localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode));
-    if (document.body) {
-      document.body.classList.remove(isDarkMode ? 'light-mode' : 'dark-mode');
-      document.body.classList.add(isDarkMode ? 'dark-mode' : 'light-mode');
-    }
+    document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
   }, [isDarkMode]);
 
   const toggleDarkMode = useCallback(() => {
@@ -118,4 +115,3 @@ const App = () => {
 };
 
 export default App;
-

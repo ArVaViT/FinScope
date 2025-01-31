@@ -1,182 +1,135 @@
-/* Settings.css */
-
-@import url('./global.css');
+/* Complete Redesign for Settings Page */
 
 .settings-container {
-  max-width: 720px;
-  margin: 5rem auto;
-  padding: 2rem;
-  border-radius: var(--input-border-radius);
-  animation: fadeIn 0.5s ease-in-out;
-  transition: transform 0.3s ease;
-  width: 100%;
-  background-color: var(--dark-element);
-  color: var(--text-light);
-  position: relative;
-}
-
-body.dark-mode .settings-container {
-  background-color: var(--light-element);
-  color: var(--text-dark);
-}
-
-.settings-container:hover {
-  transform: scale(1.01);
-}
-
-h2 {
-  text-align: center;
-  color: var(--primary-color);
-  margin-bottom: 2rem;
-  font-weight: bold;
-}
-
-.profile-section,
-.password-section,
-.theme-section {
-  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
   width: 100%;
+  height: 100vh;
+  gap: 2rem;
 }
 
-h3 {
-  color: var(--secondary-color);
-  margin-bottom: 1rem;
+.settings-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.settings-header h1 {
+  font-size: 2.5rem;
   font-weight: bold;
+  color: var(--color-dark-primary);
 }
 
-.form-group {
-  margin-bottom: 1.5rem;
+.settings-page {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  justify-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.settings-block {
+  background: var(--color-dark-surface);
+  padding: 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  width: 100%;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 90%;
+  max-width: 500px;
+  height: auto;
+  justify-content: space-between;
 }
 
-label {
-  margin-bottom: 0.5rem;
+.settings-block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+}
+
+.settings-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--color-dark-secondary);
+  margin-bottom: 1rem;
+}
+
+.settings-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.settings-label {
   font-size: 1rem;
-  color: var(--text-light);
-  font-weight: 500;
+  font-weight: 600;
+  color: var(--color-dark-text);
 }
 
-body.dark-mode label {
-  color: var(--text-dark);
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-select {
+.settings-input {
   width: 100%;
-  padding: var(--input-padding);
-  border: 1px solid var(--input-border-color);
-  border-radius: var(--input-border-radius);
-  background-color: var(--dark-element);
-  color: var(--text-light);
+  padding: 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--color-dark-primary);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: var(--color-dark-text);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-select:focus {
-  border-color: var(--input-focus-border-color);
-  outline: none;
-  box-shadow: 0 0 5px var(--primary-color);
+.settings-input:focus {
+  border-color: var(--color-dark-secondary);
+  box-shadow: 0 0 10px var(--color-dark-secondary);
 }
 
-body.dark-mode input[type="text"],
-body.dark-mode input[type="email"],
-body.dark-mode input[type="password"],
-body.dark-mode select {
-  background-color: var(--light-element);
-  color: var(--text-dark);
-  border-color: var(--input-border-color);
-}
-
-.submit-button {
-  padding: var(--button-padding);
-  font-size: var(--button-font-size);
-  background-color: var(--primary-color);
-  color: var(--text-light);
+.settings-button {
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color-dark-text);
+  background: linear-gradient(135deg, var(--color-dark-primary), var(--color-dark-secondary));
   border: none;
-  border-radius: var(--input-border-radius);
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.submit-button:hover {
-  background-color: var(--secondary-color);
+.settings-button:hover {
   transform: translateY(-3px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
 }
 
-body.dark-mode .submit-button {
-  background-color: var(--secondary-color);
-  color: var(--dark-background);
+/* Light Theme Adjustments */
+html[data-theme="light"] .settings-container {
+  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+    url('/path-to-light-background.jpg') center center / cover no-repeat;
 }
 
-.theme-toggle-btn {
-  position: relative;
-  margin: 1rem auto;
-  padding: var(--button-padding);
-  font-size: var(--button-font-size);
-  background-color: var(--primary-color);
-  color: var(--text-light);
-  border: none;
-  border-radius: var(--input-border-radius);
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+html[data-theme="light"] .settings-block {
+  background: var(--color-light-surface);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
-body.dark-mode .theme-toggle-btn {
-  background-color: var(--light-element);
-  color: var(--text-dark);
+html[data-theme="light"] .settings-input {
+  border: 1px solid var(--color-light-primary);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-light-text);
 }
 
-.theme-toggle-btn:hover {
-  background-color: var(--secondary-color);
+html[data-theme="light"] .settings-input:focus {
+  border-color: var(--color-light-secondary);
+  box-shadow: 0 0 10px var(--color-light-secondary);
 }
 
-.theme-select {
-  width: 100%;
-  max-width: 100%;
-  padding: var(--input-padding);
-  border-radius: var(--input-border-radius);
-  border: 1px solid var(--input-border-color);
-  background-color: var(--dark-element);
-  color: var(--text-light);
-  transition: border-color 0.3s ease, background-color 0.3s ease;
-}
-
-body.dark-mode .theme-select {
-  background-color: var(--light-element);
-  color: var(--text-dark);
-}
-
-@media (max-width: 768px) {
-  .settings-container {
-    padding: 1.5rem;
-  }
-
-  .form-group {
-    margin-bottom: 1rem;
-  }
-
-  .submit-button {
-    padding: 0.6rem 1rem;
-  }
-
-  .theme-toggle-btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-    margin: 1rem auto;
-  }
-}
-
-/* Fade-in animation for smoother loading */
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+html[data-theme="light"] .settings-button {
+  background: linear-gradient(135deg, var(--color-light-primary), var(--color-light-secondary));
+  color: var(--color-light-text);
 }

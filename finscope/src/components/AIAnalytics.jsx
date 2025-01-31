@@ -16,7 +16,7 @@ const AIAnalytics = ({ initialData = null, fetchPredictions }) => {
           const data = await fetchPredictions();
           setAnalyticsData(data);
         } catch (err) {
-          setError('Failed to fetch analytics data.');
+          setError('Failed to fetch analytics data. Please try again later.');
         } finally {
           setLoading(false);
         }
@@ -31,7 +31,8 @@ const AIAnalytics = ({ initialData = null, fetchPredictions }) => {
       <ul>
         {expenseBreakdown.map((item, index) => (
           <li key={index} className="expense-item">
-            <span>{item.category}</span>: <span>${item.amount}</span>
+            <span className="category">{item.category}</span>: 
+            <span className="amount">${item.amount.toFixed(2)}</span>
           </li>
         ))}
       </ul>
@@ -47,14 +48,17 @@ const AIAnalytics = ({ initialData = null, fetchPredictions }) => {
   }
 
   return (
-    <div className={`ai-analytics-container main-content`}>
-      <h2>AI Analytics</h2>
+    <div className="ai-analytics-container main-content">
+      <header className="analytics-header">
+        <h2 className="analytics-title">AI Analytics</h2>
+        <p className="analytics-description">Detailed insights and predictions powered by AI.</p>
+      </header>
       {analyticsData && analyticsData.expenseBreakdown ? (
         <div className="analytics-content">
           <div className="summary">
-            <p><strong>Total Income:</strong> ${analyticsData.totalIncome || 0}</p>
-            <p><strong>Total Expenses:</strong> ${analyticsData.totalExpenses || 0}</p>
-            <p><strong>Savings:</strong> ${analyticsData.savings || 0}</p>
+            <p><strong>Total Income:</strong> ${analyticsData.totalIncome?.toFixed(2) || 0}</p>
+            <p><strong>Total Expenses:</strong> ${analyticsData.totalExpenses?.toFixed(2) || 0}</p>
+            <p><strong>Savings:</strong> ${analyticsData.savings?.toFixed(2) || 0}</p>
           </div>
           {renderExpenseBreakdown(analyticsData.expenseBreakdown)}
         </div>
@@ -72,8 +76,8 @@ AIAnalytics.propTypes = {
     savings: PropTypes.number,
     expenseBreakdown: PropTypes.arrayOf(
       PropTypes.shape({
-        category: PropTypes.string,
-        amount: PropTypes.number,
+        category: PropTypes.string.isRequired,
+        amount: PropTypes.number.isRequired,
       })
     ),
   }),

@@ -6,9 +6,9 @@ import '../styles/global.css';
 const Notifications = ({ notifications }) => {
   return (
     <div className="notifications-container">
-      <h2 className="notifications-header">Notifications</h2>
+      <h2 className="notifications-title">Notifications</h2>
       {notifications.length > 0 ? (
-        <ul className="notifications-list">
+        <ul className="notification-list">
           {notifications.map((notification, index) => (
             <li
               key={index}

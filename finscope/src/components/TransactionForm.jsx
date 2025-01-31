@@ -52,7 +52,11 @@ const TransactionForm = ({ onAddTransaction }) => {
 
   return (
     <div className="transaction-form">
-      <h2 className="form-title">Add New Transaction</h2>
+      <header className="form-header">
+        <h2 className="form-title">Add New Transaction</h2>
+        <p className="form-description">Fill in the details below to log your transaction.</p>
+      </header>
+
       <form onSubmit={handleSubmit} className="transaction-form-container">
         <div className="form-group">
           <label htmlFor="description">Description:</label>
@@ -62,6 +66,7 @@ const TransactionForm = ({ onAddTransaction }) => {
             name="description"
             value={transaction.description}
             onChange={handleInputChange}
+            className="transaction-form-input"
             placeholder="Enter description"
             required
           />
@@ -74,6 +79,7 @@ const TransactionForm = ({ onAddTransaction }) => {
             name="amount"
             value={transaction.amount}
             onChange={handleInputChange}
+            className="transaction-form-input"
             placeholder="Enter amount"
             min="0"
             step="0.01"
@@ -88,6 +94,7 @@ const TransactionForm = ({ onAddTransaction }) => {
             name="date"
             value={transaction.date}
             onChange={handleInputChange}
+            className="transaction-form-input"
             required
           />
         </div>
@@ -98,6 +105,7 @@ const TransactionForm = ({ onAddTransaction }) => {
             name="category"
             value={transaction.category}
             onChange={handleInputChange}
+            className="transaction-form-input"
             required
           >
             <option value="">Select a category</option>
@@ -105,10 +113,12 @@ const TransactionForm = ({ onAddTransaction }) => {
             <option value="Transport">Transport</option>
             <option value="Entertainment">Entertainment</option>
             <option value="Utilities">Utilities</option>
+            <option value="Other">Other</option>
           </select>
         </div>
-        <button type="submit" className="submit-button">Add Transaction</button>
+        <button type="submit" className="transaction-form-button">Add Transaction</button>
       </form>
+
       <ToastContainer position="top-right" theme="dark" />
     </div>
   );

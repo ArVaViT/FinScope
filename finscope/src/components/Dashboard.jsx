@@ -28,31 +28,62 @@ ChartContainer.propTypes = {
 };
 
 const Dashboard = ({ stats = [], charts = [] }) => {
+  const defaultStats = [
+    { title: 'Total Income', value: 12000 },
+    { title: 'Total Expenses', value: 8000 },
+    { title: 'Savings', value: 4000 },
+  ];
+
+  const defaultCharts = [
+    { title: 'Income vs Expenses', content: <p>Sample chart will appear here. Add your data to see detailed analysis.</p> },
+    { title: 'Savings Growth', content: <p>Sample chart will appear here. Add your data to see trends over time.</p> },
+  ];
+
+  const hasUserContent = stats.length > 0 || charts.length > 0;
+
   return (
-    <>
-      <h1 className="dashboard-title">Dashboard</h1>
-      <p className="dashboard-overview">Overview of your financial activity</p>
+    <div className="dashboard-root">
+      <header className="dashboard-header">
+        <h1 className="dashboard-title">Dashboard</h1>
+        <p className="dashboard-overview">Overview of your financial activity. If you haven't added any data yet, the information below is only a sample.</p>
+      </header>
 
-      <div className="statistics">
-        {stats.length > 0 ? (
-          stats.map((stat, index) => (
+      {!hasUserContent && (
+        <div className="dashboard-notice-container">
+          <p className="dashboard-notice">
+            These are example data. Add your financial information to see personalized stats and charts.
+          </p>
+        </div>
+      )}
+
+      <section className="statistics-section">
+        <h2 className="section-title">Statistics</h2>
+        <div className="statistics-grid">
+          {(hasUserContent ? stats : defaultStats).map((stat, index) => (
             <StatCard key={index} title={stat.title} value={stat.value} />
-          ))
-        ) : (
-          <p className="no-stats">No statistics available at the moment.</p>
-        )}
-      </div>
+          ))}
+        </div>
+      </section>
 
-      <div className="charts">
-        {charts.length > 0 ? (
-          charts.map((chart, index) => (
+      <section className="charts-section">
+        <h2 className="section-title">Charts</h2>
+        <div className="charts-grid">
+          {(hasUserContent ? charts : defaultCharts).map((chart, index) => (
             <ChartContainer key={index} title={chart.title} content={chart.content} />
-          ))
-        ) : (
-          <p className="no-charts">No charts available at the moment.</p>
-        )}
-      </div>
-    </>
+          ))}
+        </div>
+      </section>
+
+      {!hasUserContent && (
+        <section className="dashboard-placeholder-section">
+          <h3 className="section-title">Placeholder Charts</h3>
+          <div className="dashboard-placeholder-images">
+            <img src="../imgs/" alt="Placeholder Chart 1" className="chart-image" />
+            <img src="/placeholder2.png" alt="Placeholder Chart 2" className="chart-image" />
+          </div>
+        </section>
+      )}
+    </div>
   );
 };
 

@@ -1,115 +1,143 @@
-/* TransactionForm.css */
+/* Styles for Transaction Form */
 
-@import url('./global.css');
-
-.transaction-form {
-  max-width: 720px;
-  margin: 5rem auto;
-  padding: 2rem;
-  border-radius: var(--input-border-radius);
-  animation: fadeIn 0.5s ease-in-out;
-  text-align: center;
-  width: 100%;
-  background-color: var(--dark-element);
-  color: var(--text-light);
-}
-
-body.dark-mode .transaction-form {
-  background-color: var(--light-element);
-  color: var(--text-dark);
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
+.transaction-form-container {
+  max-width: 750px; /* Increased width for larger form */
+  margin: 0 auto;
+  padding: calc(3.5 * var(--spacing-unit));
+  background: var(--color-dark-surface);
+  border-radius: 40px; /* More rounded corners for modern look */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
-  width: 100%;
+  gap: calc(3 * var(--spacing-unit));
+  color: var(--color-dark-text);
+  border: 3px solid var(--color-dark-primary); /* More pronounced border */
 }
 
-label {
-  margin-bottom: 0.5rem;
+.transaction-form-header {
+  text-align: center;
+  margin-bottom: calc(3 * var(--spacing-unit));
+}
+
+.transaction-form-title {
+  font-size: 2.8rem; /* Larger title */
+  font-weight: bold;
+  color: var(--color-dark-primary);
+  margin-bottom: calc(1 * var(--spacing-unit));
+}
+
+.transaction-form-description {
+  font-size: 1.2rem;
+  color: var(--color-dark-text);
+  margin-top: calc(0.5 * var(--spacing-unit));
+  line-height: var(--line-height-base);
+}
+
+.transaction-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: calc(1.5 * var(--spacing-unit));
+}
+
+.transaction-form-label {
   font-size: 1rem;
-  font-weight: 500;
-  color: var(--text-light);
+  font-weight: 600;
+  color: var(--color-dark-primary);
 }
 
-body.dark-mode label {
-  color: var(--text-dark);
-}
-
-input[type="number"],
-input[type="text"],
-input[type="date"],
-select {
+.transaction-form-input {
+  padding: calc(1.2 * var(--spacing-unit));
+  font-size: 1.1rem;
+  border: 2px solid var(--color-dark-primary);
+  border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: var(--color-dark-text);
+  transition: border-color var(--transition-medium), box-shadow var(--transition-medium), transform 0.2s ease;
   width: 100%;
-  box-sizing: border-box;
-  border: 1px solid var(--input-border-color);
-  border-radius: var(--input-border-radius);
-  padding: var(--input-padding);
-  background-color: var(--dark-element);
-  color: var(--text-light);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  height: auto; /* Match select height dynamically */
+  box-sizing: border-box; /* Ensure padding doesn't affect size */
 }
 
-body.dark-mode input[type="number"],
-body.dark-mode input[type="text"],
-body.dark-mode input[type="date"],
-body.dark-mode select {
-  background-color: var(--light-element);
-  color: var(--text-dark);
+select.transaction-form-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; /* Ensure consistent dropdown across browsers */
 }
 
-input[type="number"]:focus,
-input[type="text"]:focus,
-input[type="date"]:focus,
-select:focus {
-  border-color: var(--input-focus-border-color);
-  box-shadow: 0 0 5px var(--primary-color);
+.transaction-form-input:focus {
+  border-color: var(--color-dark-secondary);
+  box-shadow: 0 0 15px var(--color-dark-secondary);
+  transform: scale(1.02);
   outline: none;
 }
 
-select {
-  cursor: pointer;
-}
-
-.submit-button {
-  width: 100%;
-  max-width: 200px;
-  margin: 0 auto;
-  padding: var(--button-padding);
-  font-size: var(--button-font-size);
-  font-weight: 600;
-  background-color: var(--primary-color);
-  color: var(--text-light);
+.transaction-form-button {
+  align-self: center;
+  padding: calc(1.5 * var(--spacing-unit)) calc(4 * var(--spacing-unit));
+  font-size: 1.3rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, var(--color-dark-primary), var(--color-dark-secondary));
+  color: var(--color-dark-text);
   border: none;
-  border-radius: var(--input-border-radius);
+  border-radius: 40px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background var(--transition-medium), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.submit-button:hover {
-  background-color: var(--secondary-color);
-  transform: translateY(-3px);
+.transaction-form-button:hover {
+  background: linear-gradient(135deg, var(--color-dark-secondary), var(--color-dark-primary));
+  transform: translateY(-4px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
 }
 
-body.dark-mode .submit-button {
-  background-color: var(--secondary-color);
-  color: var(--dark-background);
+.transaction-form-button:disabled {
+  background-color: var(--color-dark-surface);
+  color: var(--color-dark-text);
+  cursor: not-allowed;
 }
 
-@media (max-width: 768px) {
-  .transaction-form {
-    padding: 1.5rem;
-    margin: 1rem auto;
-  }
-
-  .submit-button {
-    padding: 0.6rem 1rem;
-  }
+/* Error Messages */
+.transaction-form-error {
+  color: var(--color-error);
+  font-size: 0.875rem;
+  margin-top: calc(0.5 * var(--spacing-unit));
+  text-align: left;
 }
 
-/* Fade-in animation for smoother loading */
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+/* Light Theme Adjustments */
+html[data-theme="light"] .transaction-form-container {
+  background: var(--color-light-surface);
+  color: var(--color-light-text);
+  border: 3px solid var(--color-light-primary);
+}
+
+html[data-theme="light"] .transaction-form-input {
+  border: 2px solid var(--color-light-primary);
+  background-color: rgba(255, 255, 255, 0.8);
+  color: var(--color-light-text);
+  border-radius: 25px;
+  height: auto;
+  box-sizing: border-box;
+}
+
+select.transaction-form-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+html[data-theme="light"] .transaction-form-input:focus {
+  border-color: var(--color-light-secondary);
+  box-shadow: 0 0 15px var(--color-light-secondary);
+}
+
+html[data-theme="light"] .transaction-form-button {
+  background: linear-gradient(135deg, var(--color-light-primary), var(--color-light-secondary));
+  color: var(--color-light-text);
+  border-radius: 40px;
+}
+
+html[data-theme="light"] .transaction-form-button:hover {
+  background: linear-gradient(135deg, var(--color-light-secondary), var(--color-light-primary));
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
 }

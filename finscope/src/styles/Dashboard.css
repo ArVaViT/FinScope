@@ -1,104 +1,123 @@
-/* Dashboard.css */
+/* Styles for Dashboard */
 
-.dashboard-container {
-  padding: var(--container-padding);
-  margin: calc(var(--navbar-height) + 1rem) auto;
-  border-radius: var(--input-border-radius);
-  background-color: var(--light-element);
-  transition: all 0.3s ease-in-out;
-  max-width: var(--container-max-width);
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-
-body.dark-mode .dashboard-container {
-  background-color: var(--dark-element);
-  color: var(--text-light);
-}
-
-.stat-card {
-  padding: 1rem;
-  background-color: var(--dark-element);
-  margin: 1rem auto;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.stat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--button-hover-shadow);
-}
-
-.stat-card h2 {
-  color: var(--secondary-color);
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.stat-card p {
-  font-size: 1.8rem;
-  color: var(--text-light);
-  font-weight: bold;
-}
-
-.charts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: space-around;
-}
-
-.chart-container {
-  flex: 1 1 calc(50% - 2rem);
-  background-color: var(--dark-element);
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: var(--button-hover-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 100%;
-  max-width: 500px;
-}
-
-.chart-container:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--button-hover-shadow);
-}
-
-.chart-container h3 {
-  color: var(--secondary-color);
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-}
-
-.chart-placeholder {
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--dark-element);
-  border-radius: 8px;
-  color: var(--text-light);
-  font-size: 1rem;
-  opacity: 0.8;
-}
-
-@media (max-width: 768px) {
-  .statistics {
+.dashboard-root {
+    display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 2rem;
   }
-
-  .charts {
-    flex-direction: column;
+  
+  .dashboard-header {
+    text-align: center;
+    margin-bottom: 2rem;
   }
-
-  .chart-container {
+  
+  .dashboard-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color-dark-primary);
+    margin-bottom: 0.5rem;
+  }
+  
+  .dashboard-overview {
+    font-size: 1rem;
+    color: var(--color-dark-text);
+    max-width: 600px;
+    line-height: 1.5;
+  }
+  
+  .statistics-section {
     width: 100%;
-    max-width: 100%;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
   }
-}
-
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
+  
+  .stat-card {
+    background: var(--color-dark-surface);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+    color: var(--color-dark-text);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .stat-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-dark-primary);
+  }
+  
+  .charts-section {
+    width: 100%;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .chart-container {
+    background: var(--color-dark-surface);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+    color: var(--color-dark-text);
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .chart-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .chart-placeholder {
+    width: 100%;
+    height: 200px;
+    background: #333;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-dark-text);
+    font-size: 1rem;
+  }
+  
+  .dashboard-placeholder-section {
+    margin-top: 2rem;
+  }
+  
+  .dashboard-placeholder-images {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .dashboard-placeholder-images img {
+    width: 150px;
+    height: 100px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+    object-fit: cover;
+  }
+  
