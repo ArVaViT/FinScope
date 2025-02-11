@@ -1,0 +1,183 @@
+/* TransactionJournal.css */
+.transaction-journal {
+  background: linear-gradient(135deg, rgba(228,235,254,0.9), rgba(254,221,248,0.9), rgba(237,226,252,0.9));
+  padding: 0.5rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.3s ease;
+}
+
+html[data-theme="dark"] .transaction-journal {
+  background: linear-gradient(135deg, rgba(54,26,55,0.9), rgba(66,25,49,0.9), rgba(15,2,31,0.9), rgba(58,27,53,0.9));
+}
+
+.journal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ccc;
+}
+
+html[data-theme="dark"] .journal-header {
+  border-bottom: 1px solid #555;
+}
+
+.journal-title {
+  font-size: 1.5rem;
+  color: #4A90E2;
+  margin: 0;
+  flex-grow: 1;
+  text-align: center;
+}
+
+html[data-theme="dark"] .journal-title {
+  color: #8ab4f8;
+}
+
+.month-amount {
+  font-size: 1rem;
+  color: #4A90E2;
+  margin-left: 0.5rem;
+}
+
+html[data-theme="dark"] .month-amount {
+  color: #8ab4f8;
+}
+
+.arrow-button {
+  background: #4A90E2;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1rem;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  flex-shrink: 0;
+}
+
+.arrow-button:hover {
+  background: #357ABD;
+}
+
+html[data-theme="dark"] .arrow-button {
+  background: #8ab4f8;
+}
+
+html[data-theme="dark"] .arrow-button:hover {
+  background: #6aaee8;
+}
+
+.journal-transactions {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 0.5rem;
+  padding-right: 0;
+  scrollbar-width: none;
+}
+
+.journal-transactions::-webkit-scrollbar {
+  display: none;
+}
+
+.transaction-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+}
+
+html[data-theme="dark"] .transaction-item {
+  border-bottom: 1px solid #555;
+}
+
+.transaction-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+.transaction-description {
+  font-weight: bold;
+  color: #212121;
+}
+
+html[data-theme="dark"] .transaction-description {
+  color: #8ab4f8;
+}
+
+.transaction-amount {
+  color: #4A90E2;
+}
+
+html[data-theme="dark"] .transaction-amount {
+  color: #8ab4f8;
+}
+
+.transaction-date,
+.transaction-category {
+  color: #777;
+}
+
+html[data-theme="dark"] .transaction-date,
+html[data-theme="dark"] .transaction-category {
+  color: #ccc;
+}
+
+.no-transactions {
+  text-align: center;
+  color: #777;
+  padding-top: 1rem;
+}
+
+@media (max-width: 600px) {
+  .transaction-journal {
+    height: auto;
+    padding: 1rem;
+    border-radius: 15px;
+  }
+  
+  .journal-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .journal-title {
+    font-size: 1.3rem;
+    text-align: center;
+    margin: 0;
+  }
+  
+  .arrow-button {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+    margin: 0 0.5rem;
+  }
+  
+  .journal-transactions::-webkit-scrollbar {
+    display: block;
+    width: 8px;
+  }
+  .journal-transactions::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 16px;
+  }
+  .journal-transactions::-webkit-scrollbar-thumb {
+    background: #4A90E2;
+    border-radius: 16px;
+    transition: background-color 1s ease, opacity 1s ease;
+  }
+  .journal-transactions::-webkit-scrollbar-thumb:hover {
+    background: #357ABD;
+  }
+}

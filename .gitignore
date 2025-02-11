@@ -1,0 +1,36 @@
+# Игнорировать все папки node_modules в любом месте проекта
+**/node_modules/
+
+# Игнорировать файлы с переменными окружения
+.env
+
+# Игнорировать файлы блокировки зависимостей
+package-lock.json
+yarn.lock
+
+# Игнорировать директории сборки (для фронтенда)
+**/dist/
+**/build/
+
+# Лог-файлы
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Файлы операционной системы
+.DS_Store
+Thumbs.db
+
+# Файлы настроек IDE и редакторов
+.vscode/
+.idea/
+
+# Ненужное
+combine_files.py
+combine_backend1.txt
+combine_backend2.txt
+combine_frontend1.txt
+combine_frontend2.txt
+combine_frontend3.txt
+combine_frontend4.txt
+output.txt

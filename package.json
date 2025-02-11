@@ -1,0 +1,8 @@
+{
+  "name": "finscope-backend-root",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "cd finscope-backend && npm start",
+    "postinstall": "cd finscope-backend && npm install && npm rebuild"
+  }
+}

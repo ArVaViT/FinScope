@@ -1,0 +1,270 @@
+/* Settings.css */
+
+/* Base container styles for both themes */
+html[data-theme="dark"] .settings-container,
+html[data-theme="light"] .settings-container {
+  margin-top: var(--navbar-height);
+  height: auto;
+  width: 100%;
+  max-width: 1200px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-soft);
+  transition: background var(--transition-medium), padding-bottom 0.3s ease;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+
+/* Expanded vs collapsed */
+html[data-theme="dark"] .settings-container.expanded,
+html[data-theme="light"] .settings-container.expanded {
+  padding-bottom: 140px !important;
+}
+
+html[data-theme="dark"] .settings-container.collapsed,
+html[data-theme="light"] .settings-container.collapsed {
+  padding-bottom: 1rem;
+}
+
+/* Background gradients based on theme */
+html[data-theme="dark"] .settings-container {
+  background: linear-gradient(135deg, 
+    rgba(54,26,55,0.9), 
+    rgba(66,25,49,0.9), 
+    rgba(15,2,31,0.9), 
+    rgba(58,27,53,0.9)
+  );
+  color: var(--dark-text);
+}
+
+html[data-theme="light"] .settings-container {
+  background: linear-gradient(135deg, 
+    rgba(228,235,254,0.9), 
+    rgba(254,221,248,0.9), 
+    rgba(237,226,252,0.9)
+  );
+  color: var(--light-text);
+}
+
+/* Title and message */
+.settings-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: calc(1.5 * var(--spacing-unit));
+  /* Для светлой темы используем основной цвет */
+  color: var(--primary-color, #357ABD);
+}
+
+html[data-theme="dark"] .settings-title {
+  /* В темной теме основной цвет – светло-голубой */
+  color: var(--primary-color-dark, #4A90E2);
+}
+
+.settings-message {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: calc(1.5 * var(--spacing-unit));
+  color: var(--color-error, red);
+}
+
+/* Settings cards container arranged in a column */
+.settings-cards {
+  display: flex;
+  flex-direction: column;
+  gap: calc(1 * var(--spacing-unit));
+  flex-grow: 1;
+  overflow-y: auto;
+  transition: max-height 0.3s ease;
+}
+
+/* Header for collapsible sections */
+.settings-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-button {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  color: inherit;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 15px;
+  transition: background 0.3s;
+}
+
+.toggle-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Each settings card styling */
+.settings-card {
+  padding: calc(1.5 * var(--spacing-unit));
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-fast);
+  /* Для светлой темы используем прозрачный тёмный фон */
+  background: rgba(0, 0, 0, 0.15);
+  margin: 0 auto;
+  width: 90%;
+}
+
+.settings-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Card title */
+.settings-card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: calc(1 * var(--spacing-unit));
+  text-align: center;
+}
+
+html[data-theme="dark"] .settings-card-title {
+  /* В темной теме делаем заголовки карточек основным цветом */
+  color: var(--primary-color, #4A90E2);
+}
+
+html[data-theme="light"] .settings-card-title {
+  color: var(--primary-color, #357ABD);
+}
+
+.settings-card-description {
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: calc(1 * var(--spacing-unit));
+}
+
+/* Form styles */
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: calc(1 * var(--spacing-unit));
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.5 * var(--spacing-unit));
+}
+
+.form-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: inherit;
+}
+
+.form-input {
+  padding: calc(1.2 * var(--spacing-unit));
+  font-size: 1.1rem;
+  border: 2px solid;
+  border-radius: var(--border-radius);
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color var(--transition-medium), box-shadow var(--transition-medium), transform 0.2s ease;
+  background: transparent;
+  color: inherit;
+}
+
+html[data-theme="dark"] .form-input {
+  border-color: var(--primary-color, #4A90E2);
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+html[data-theme="light"] .form-input {
+  border-color: var(--primary-color, #357ABD);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.form-input:focus {
+  outline: none;
+  transform: scale(1.02);
+  box-shadow: 0 0 15px;
+}
+
+/* Button styles with gradient animations */
+.form-button {
+  padding: calc(0.75 * var(--spacing-unit)) calc(1.5 * var(--spacing-unit));
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  background-size: 300% 300%;
+  transition: transform var(--transition-fast);
+  color: #fff;
+  animation: buttonGradient 5s ease infinite;
+  margin-top: calc(1 * var(--spacing-unit));
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-button:hover {
+  transform: translateY(-2px);
+}
+
+.form-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@keyframes buttonGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+html[data-theme="dark"] .form-button {
+  background-image: linear-gradient(45deg, #4A90E2, #50E3C2);
+}
+
+html[data-theme="light"] .form-button {
+  background-image: linear-gradient(45deg, #357ABD, #3BBEC1);
+}
+
+/* Specific styling for the Contact Support button */
+.contact-support-btn {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+/* Theme toggle button styling */
+.theme-toggle-btn {
+  width: 100%;
+}
+
+/* Mobile styles */
+@media (max-width: 600px) {
+  .settings-container {
+    padding: 1rem;
+    border-radius: 15px;
+  }
+  
+  .settings-title {
+    font-size: 1.8rem;
+  }
+  
+  .settings-form {
+    gap: 0.8rem;
+  }
+  
+  .form-input {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+  
+  .form-button, .theme-toggle-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: 15px;
+  }
+}

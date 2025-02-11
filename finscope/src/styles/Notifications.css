@@ -1,0 +1,113 @@
+/* Notifications.css */
+
+/* Container styling matching our new design language */
+.notifications-container {
+  margin: 2rem auto;
+  max-width: 800px;
+  padding: 2rem;
+  border-radius: 30px;
+  box-shadow: var(--shadow-medium, 0 4px 12px rgba(0, 0, 0, 0.15));
+  transition: background 0.3s ease;
+  background: linear-gradient(135deg, 
+    rgba(228,235,254,0.9), 
+    rgba(254,221,248,0.9), 
+    rgba(237,226,252,0.9)
+  );
+  color: var(--light-text, #212121);
+}
+
+html[data-theme="dark"] .notifications-container {
+  background: linear-gradient(135deg, 
+    rgba(54,26,55,0.9), 
+    rgba(66,25,49,0.9), 
+    rgba(15,2,31,0.9), 
+    rgba(58,27,53,0.9)
+  );
+  color: var(--dark-text, #ffffff);
+}
+
+/* Header styling */
+.notifications-header {
+  text-align: center;
+  margin-bottom: calc(1.5 * var(--spacing-unit, 16px));
+}
+
+.notifications-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  color: var(--primary-color, #4A90E2);
+}
+
+/* List styling */
+.notifications-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Notification item styled as a card */
+.notification-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--card-background-light, #ffffff);
+  color: inherit;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 30px;
+  box-shadow: var(--shadow-soft, 0 2px 4px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+html[data-theme="dark"] .notification-item {
+  background: var(--card-background-dark, #2e2e2e);
+}
+
+.notification-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-medium, 0 4px 12px rgba(0, 0, 0, 0.15));
+}
+
+/* Notification content */
+.notification-content {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.notification-title {
+  margin: 0 0 0.3rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--primary-color, #4A90E2);
+}
+
+.notification-message {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Dismiss button styling */
+.dismiss-button {
+  background: linear-gradient(45deg, var(--primary-color, #4A90E2), var(--secondary-color, #50E3C2));
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.dismiss-button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(45deg, var(--secondary-color, #50E3C2), var(--primary-color, #4A90E2));
+}
+
+/* No notifications message */
+.no-notifications {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: var(--text-secondary, #777777);
+}

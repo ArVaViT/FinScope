@@ -1,0 +1,127 @@
+/* TransactionForm.css */
+
+/* Container styling matching our new design language */
+.transaction-form {
+  margin: 2rem auto;
+  max-width: 800px;
+  padding: 2rem;
+  background: linear-gradient(135deg, 
+    rgba(228,235,254,0.9), 
+    rgba(254,221,248,0.9), 
+    rgba(237,226,252,0.9)
+  );
+  border-radius: 30px;
+  box-shadow: var(--shadow-medium, 0 4px 12px rgba(0, 0, 0, 0.15));
+  color: var(--light-text, #212121);
+  transition: background 0.3s ease;
+}
+
+html[data-theme="dark"] .transaction-form {
+  background: linear-gradient(135deg, 
+    rgba(54,26,55,0.9), 
+    rgba(66,25,49,0.9), 
+    rgba(15,2,31,0.9), 
+    rgba(58,27,53,0.9)
+  );
+  color: var(--dark-text, #ffffff);
+}
+
+/* Header styling */
+.transaction-form-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.transaction-form-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color, #4A90E2);
+}
+
+.transaction-form-description {
+  font-size: 1.1rem;
+  color: var(--text-secondary, #777777);
+  margin-bottom: 1.5rem;
+}
+
+/* Form container styling */
+.transaction-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Form group styling */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Label styling */
+.form-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: inherit;
+}
+
+/* Input styling */
+.form-input {
+  padding: 1rem;
+  font-size: 1.1rem;
+  border: 2px solid;
+  border-radius: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  background: transparent;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: inherit;
+}
+
+html[data-theme="dark"] .form-input {
+  border-color: #4A90E2;
+}
+
+html[data-theme="light"] .form-input {
+  border-color: #357ABD;
+}
+
+.form-input:focus {
+  outline: none;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Button styling */
+.form-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  background-size: 300% 300%;
+  transition: transform 0.3s ease;
+  color: #fff;
+  margin-top: 1rem;
+  align-self: center;
+  animation: buttonGradient 5s ease infinite;
+}
+
+.form-button:hover {
+  transform: translateY(-2px);
+}
+
+@keyframes buttonGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+html[data-theme="dark"] .form-button {
+  background-image: linear-gradient(45deg, #4A90E2, #50E3C2);
+}
+
+html[data-theme="light"] .form-button {
+  background-image: linear-gradient(45deg, #357ABD, #3BBEC1);
+}

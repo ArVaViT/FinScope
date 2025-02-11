@@ -1,0 +1,221 @@
+/* global.css */
+
+/* ================================================
+   Global Reset
+================================================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================================================
+   CSS Variables
+================================================ */
+:root {
+  /* Dark Theme */
+  --dark-bg: #121212;
+  --dark-text: #ffffff;
+  --dark-element: #1e1e1e;
+  --card-background-dark: #2e2e2e;
+
+  /* Light Theme */
+  --light-bg: #ffffff;
+  --light-text: #212121;
+  --light-element: #f8f9fa;
+  --card-background-light: #ffffff;
+
+  /* Global Variables (Unified Design) */
+  --primary-color: #4A90E2;  /* Changed from #6200ee for consistency */
+  --text-secondary: #777777;
+  --spacing-unit: 16px;
+  --border-radius: 30px;     /* Increased for a modern, rounded look */
+  --shadow-soft: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --transition-medium: 0.3s;
+  --transition-fast: 0.3s;
+  --navbar-height: 4.5rem;
+}
+
+/* ================================================
+   Themes: Dark and Light
+================================================ */
+html[data-theme="dark"] {
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url('../imgs/background-dark.jpg') center/cover no-repeat fixed;
+  color: var(--dark-text);
+  animation: fadeInBackground var(--transition-medium) ease-in-out;
+}
+
+html[data-theme="light"] {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.7)
+    ),
+    url('../imgs/background-light.jpg') center/cover no-repeat fixed;
+  color: var(--light-text);
+  animation: fadeInBackground var(--transition-medium) ease-in-out;
+}
+
+/* Ensure html and body occupy full height */
+html, body {
+  min-height: 100vh;
+}
+
+/* ================================================
+   Base Typography and Element Styles
+================================================ */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  background-color: inherit;
+  color: inherit;
+  transition: background-color var(--transition-medium), color var(--transition-medium);
+  /* Top padding to avoid content under fixed navbar */
+  padding-top: var(--navbar-height);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+  margin-bottom: var(--spacing-unit);
+  font-weight: 600;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: var(--spacing-unit);
+}
+
+/* Lists */
+ul, ol {
+  list-style: none;
+  margin-bottom: var(--spacing-unit);
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: var(--spacing-unit);
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* ================================================
+   Link Styles
+================================================ */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+  outline: 2px dashed var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* ================================================
+   Button Styles
+================================================ */
+.button {
+  display: inline-block;
+  padding: var(--spacing-unit) calc(2 * var(--spacing-unit));
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--primary-color);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color var(--transition-medium), transform var(--transition-fast);
+}
+
+.button:hover {
+  background-color: #4a00e0; /* Adjust if needed */
+  transform: translateY(-2px);
+}
+
+/* ================================================
+   Form Styles
+================================================ */
+input, textarea, select {
+  padding: var(--spacing-unit);
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  transition: border-color var(--transition-medium);
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--primary-color);
+}
+
+/* ================================================
+   Image Styles
+================================================ */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ================================================
+   Code and Preformatted Text
+================================================ */
+code, pre {
+  font-family: 'Courier New', monospace;
+  background-color: #f5f5f5;
+  padding: calc(0.5 * var(--spacing-unit));
+  border-radius: var(--border-radius);
+}
+
+/* ================================================
+   Focus Styles for Accessibility
+================================================ */
+:focus {
+  outline: 2px dashed var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* ================================================
+   Fade-In Animation for Backgrounds
+================================================ */
+@keyframes fadeInBackground {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ================================================
+   Containers and Utility Classes
+================================================ */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-unit);
+}
+
+/* Utility classes for margins */
+.mt-16 { margin-top: var(--spacing-unit); }
+.mb-16 { margin-bottom: var(--spacing-unit); }
+.mt-32 { margin-top: calc(2 * var(--spacing-unit)); }
+.mb-32 { margin-bottom: calc(2 * var(--spacing-unit)); }

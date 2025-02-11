@@ -1,0 +1,221 @@
+/* Загальні стилі Dashboard */
+.dashboard-container {
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 2rem;
+  background: transparent;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color, #4A90E2);
+}
+
+html[data-theme="dark"] .dashboard-title {
+  color: var(--primary-color-dark, #8ab4f8);
+}
+
+.dashboard-overview {
+  font-size: 1.1rem;
+  color: var(--text-secondary, #777777);
+}
+
+html[data-theme="dark"] .dashboard-overview {
+  color: var(--secondary-dark, #b0b0b0);
+}
+
+/* Секція статистики */
+.statistics-section {
+  background: linear-gradient(135deg, rgba(228,235,254,0.9), rgba(254,221,248,0.9), rgba(237,226,252,0.9));
+  padding: 1rem;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  margin-bottom: 2rem;
+  transition: background 0.3s ease;
+}
+
+html[data-theme="dark"] .statistics-section {
+  background: linear-gradient(135deg, rgba(54,26,55,0.9), rgba(66,25,49,0.9), rgba(15,2,31,0.9), rgba(58,27,53,0.9));
+}
+
+/* Сітка статистики: на великих екранах 3 колонки */
+.statistics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* Картки статистики */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-card {
+  background: var(--card-background-light, #ffffff);
+  padding: 1rem;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  animation: fadeIn 0.8s ease forwards;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: scale(1.03);
+}
+
+html[data-theme="dark"] .stat-card {
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.stat-card:nth-child(1) { animation-delay: 0.1s; }
+.stat-card:nth-child(2) { animation-delay: 0.2s; }
+.stat-card:nth-child(3) { animation-delay: 0.3s; }
+.stat-card:nth-child(4) { animation-delay: 0.4s; }
+.stat-card:nth-child(5) { animation-delay: 0.5s; }
+.stat-card:nth-child(6) { animation-delay: 0.6s; }
+
+.stat-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color, #4A90E2);
+}
+
+html[data-theme="dark"] .stat-title {
+  color: var(--primary-color-dark, #8ab4f8);
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #212121;
+}
+
+html[data-theme="dark"] .stat-value {
+  color: #212121;
+}
+
+/* Нижня частина – два блоки поруч (Transaction Journal і Financial Chart) */
+.dashboard-bottom {
+  display: flex;
+  gap: 1rem;
+}
+
+.dashboard-block {
+  flex: 1;
+  height: 300px; /* Фіксована висота для обох блоків */
+}
+
+/* Блок графіка (placeholder) */
+.chart-placeholder-container {
+  background: linear-gradient(135deg, rgba(228,235,254,0.9), rgba(254,221,248,0.9), rgba(237,226,252,0.9));
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+html[data-theme="dark"] .chart-placeholder-container {
+  background: linear-gradient(135deg, rgba(54,26,55,0.9), rgba(66,25,49,0.9), rgba(15,2,31,0.9), rgba(58,27,53,0.9));
+}
+
+.chart-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color, #4A90E2);
+}
+
+html[data-theme="dark"] .chart-title {
+  color: var(--primary-color-dark, #8ab4f8);
+}
+
+/* Медіа-запити для мобільних пристроїв */
+@media (max-width: 600px) {
+  /* Контейнер Dashboard: трохи зменшені відступи */
+  .dashboard-container {
+    padding: 1rem;
+  }
+  
+  .dashboard-title {
+    font-size: 2rem;
+  }
+  
+  .dashboard-overview {
+    font-size: 1rem;
+  }
+  
+  /* Статистика: перехід до сітки 2 колонки або навіть 1 колонки */
+  .statistics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Нижня частина: блоки стають вертикальними */
+  .dashboard-bottom {
+    flex-direction: column;
+  }
+  
+  .dashboard-block {
+    height: auto;
+  }
+  
+  /* Transaction Journal: адаптація мобільного вигляду */
+  .transaction-journal {
+    height: auto;
+    padding: 1rem;
+    border-radius: 15px;
+  }
+  
+  .journal-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem 0;
+    border-bottom: none;
+  }
+  
+  .journal-title {
+    font-size: 1.3rem;
+    text-align: left;
+    margin-bottom: 0.5rem;
+  }
+  
+  .arrow-button {
+    width: 1.8rem;
+    height: 1.8rem;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+  }
+  
+  .journal-transactions {
+    padding-right: 4px;
+    max-height: 200px; /* Зменшена максимальна висота для мобільних */
+  }
+  
+  .transaction-row {
+    font-size: 0.85rem;
+  }
+  
+  /* Chart Placeholder: зменшення шрифтів */
+  .chart-title {
+    font-size: 1.5rem;
+  }
+}

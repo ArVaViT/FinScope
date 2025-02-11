@@ -1,0 +1,179 @@
+/* AIAnalytics.css */
+
+/* Container with a gradient background for both themes */
+html[data-theme="dark"] .ai-analytics-container {
+    padding: calc(2 * var(--spacing-unit));
+    background: linear-gradient(135deg, rgba(54, 26, 55, 0.9), rgba(66, 25, 49, 0.9), rgba(15, 2, 31, 0.9), rgba(58, 27, 53, 0.9));
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
+    transition: background var(--transition-medium);
+    margin: calc(2 * var(--spacing-unit)) auto;
+    max-width: 1200px;
+    color: var(--dark-text, #ffffff);
+  }
+  
+  html[data-theme="light"] .ai-analytics-container {
+    padding: calc(2 * var(--spacing-unit));
+    background: linear-gradient(135deg, rgba(228, 235, 254, 0.9), rgba(254, 221, 248, 0.9), rgba(237, 226, 252, 0.9));
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
+    transition: background var(--transition-medium);
+    margin: calc(2 * var(--spacing-unit)) auto;
+    max-width: 1200px;
+    color: var(--dark-text, #ffffff);
+  }
+  
+  .analytics-header {
+    text-align: center;
+    margin-bottom: calc(2 * var(--spacing-unit));
+  }
+  
+  /* Accent text: use different solid colors based on theme */
+  html[data-theme="dark"] .analytics-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #4A90E2; /* Dark theme accent */
+    margin-bottom: calc(0.5 * var(--spacing-unit));
+  }
+  html[data-theme="light"] .analytics-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #357ABD; /* Light theme accent */
+    margin-bottom: calc(0.5 * var(--spacing-unit));
+  }
+  
+  .analytics-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: calc(1 * var(--spacing-unit));
+  }
+  
+  /* Refresh Button with gradient animation matching accent colors */
+  .refresh-button {
+    padding: calc(0.75 * var(--spacing-unit)) calc(1.5 * var(--spacing-unit));
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: transform var(--transition-fast);
+    margin-top: calc(1 * var(--spacing-unit));
+    color: #fff;
+    background-size: 300% 300%;
+    animation: gradientAnimation 5s ease infinite;
+  }
+  
+  .refresh-button:hover {
+    transform: translateY(-2px);
+  }
+  
+  .refresh-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  /* Define gradient animation keyframes for both themes */
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* Dark theme gradient for refresh button */
+  html[data-theme="dark"] .refresh-button {
+    background-image: linear-gradient(45deg, #4A90E2, #50E3C2);
+  }
+  
+  /* Light theme gradient for refresh button */
+  html[data-theme="light"] .refresh-button {
+    background-image: linear-gradient(45deg, #357ABD, #3BBEC1);
+  }
+  
+  /* Apply similar accent colors to other key texts */
+  html[data-theme="dark"] .expense-breakdown-title,
+  html[data-theme="dark"] .expense-amount {
+    color: #4A90E2;
+  }
+  html[data-theme="light"] .expense-breakdown-title,
+  html[data-theme="light"] .expense-amount {
+    color: #357ABD;
+  }
+  
+  .loading,
+  .error,
+  .no-data {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-top: calc(2 * var(--spacing-unit));
+  }
+  
+  .error {
+    color: var(--color-error, red);
+  }
+  
+  .analytics-content {
+    display: flex;
+    flex-direction: column;
+    gap: calc(2 * var(--spacing-unit));
+  }
+  
+  .analytics-summary {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background: inherit;
+    padding: calc(1 * var(--spacing-unit));
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
+    color: var(--dark-text, #ffffff);
+  }
+  
+  .analytics-summary p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+  }
+  
+  .expense-breakdown {
+    background: inherit;
+    padding: calc(1.5 * var(--spacing-unit));
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
+    color: var(--dark-text, #ffffff);
+  }
+  
+  .expense-breakdown-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: calc(1 * var(--spacing-unit));
+    text-align: center;
+  }
+  
+  .expense-breakdown-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .expense-breakdown-item {
+    font-size: 1.1rem;
+    padding: calc(0.5 * var(--spacing-unit)) 0;
+    border-bottom: 1px solid var(--text-secondary);
+  }
+  
+  .expense-breakdown-item:last-child {
+    border-bottom: none;
+  }
+  
+  .expense-category {
+    font-weight: 600;
+    margin-right: calc(0.5 * var(--spacing-unit));
+  }
+  
