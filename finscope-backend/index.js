@@ -11,11 +11,13 @@ const notificationsRoutes = require('./routes/notifications');
 const errorHandler = require('./middleware/errorHandler');
 const config = require('./config');
 const confirmRoutes = require('./routes/confirm');
+const aiRoutes = require('./routes/ai');
 
 dotenv.config();
 
 const app = express();
 
+app.use('/ai', aiRoutes);
 app.use(express.json());
 app.use(cors());
 app.use(morgan('dev'));
