@@ -226,7 +226,7 @@ const AppContent = () => {
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/" element={<ProtectedRoute><Dashboard transactions={transactions} /></ProtectedRoute>} />
           <Route path="/transactions" element={<ProtectedRoute><TransactionForm onAddTransaction={onAddTransaction} onUpdateTransaction={onUpdateTransaction} onDeleteTransaction={onDeleteTransaction} transactions={transactions} /></ProtectedRoute>} />
-          <Route path="/analytics" element={<ProtectedRoute><AIAnalytics fetchPredictions={fetchPredictions} transactions={transactions} /></ProtectedRoute>} />
+          <Route path="/analytics" element={<ProtectedRoute><AIAnalytics transactions={transactions} /></ProtectedRoute>} />
           <Route path="/settings" element={<ProtectedRoute><Settings onUpdateProfile={onUpdateProfile} onChangePassword={onChangePassword} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} /></ProtectedRoute>} />
           <Route path="/notifications" element={<ProtectedRoute><Notifications notifications={notifications} onDismiss={onDismissNotification} /></ProtectedRoute>} />
         </Routes>

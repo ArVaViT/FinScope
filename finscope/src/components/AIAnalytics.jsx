@@ -2,78 +2,69 @@ import React, { useEffect, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import '../styles/AIAnalytics.css';
 
-const AIAnalytics = ({ initialData = null, fetchPredictions }) => {
-  const [analyticsData, setAnalyticsData] = useState(initialData);
+const AIAnalytics = ({ transactions }) => {
+  const [comment, setComment] = useState('');
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(!initialData);
+  const [loading, setLoading] = useState(false);
 
-  const loadAnalytics = useCallback(async () => {
+  const fetchAIComment = useCallback(async () => {
     setError(null);
     setLoading(true);
     try {
-      const data = await fetchPredictions();
-      setAnalyticsData(data);
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/ai/analyze`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ transactions }),
+      });
+
+      if (!res.ok) {
+        throw new Error('AI error');
+      }
+
+      const data = await res.json();
+      setComment(data.comment || 'AI не повернув коментар.');
     } catch (err) {
-      setError('Failed to fetch analytics data. Please try again later.');
+      console.error('AI fetch error:', err);
+      setError('Не вдалося отримати AI-аналітику. Спробуйте ще раз.');
     } finally {
       setLoading(false);
     }
-  }, [fetchPredictions]);
+  }, [transactions]);
 
   useEffect(() => {
-    if (!initialData) {
-      loadAnalytics();
+    if (transactions && transactions.length > 0) {
+      fetchAIComment();
     }
-  }, [initialData, loadAnalytics]);
-
-  const renderExpenseBreakdown = (expenseBreakdown) => (
-    <div className="expense-breakdown">
-      <h3 className="expense-breakdown-title">Expense Breakdown</h3>
-      <ul className="expense-breakdown-list">
-        {expenseBreakdown.map((item, index) => (
-          <li key={index} className="expense-breakdown-item">
-            <span className="expense-category">{item.category}</span>: 
-            <span className="expense-amount">${Number(item.amount).toFixed(2)}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+  }, [transactions, fetchAIComment]);
 
   return (
     <div className="ai-analytics-container">
       <header className="analytics-header">
         <h2 className="analytics-title">AI Analytics</h2>
         <p className="analytics-description">
-          Detailed insights and predictions powered by AI.
+          Короткий AI-коментар до ваших фінансів.
         </p>
-        <button className="refresh-button" onClick={loadAnalytics} disabled={loading}>
+        <button className="refresh-button" onClick={fetchAIComment} disabled={loading}>
           Refresh Data
         </button>
       </header>
-      {loading && <p className="loading">Loading analytics...</p>}
+
+      {loading && <p className="loading">Завантаження AI-коментаря...</p>}
       {error && <p className="error">{error}</p>}
-      {!loading && !error && analyticsData ? (
+
+      {!loading && !error && comment && (
         <div className="analytics-content">
           <div className="analytics-summary">
-            <p>
-              <strong>Total Income:</strong> ${analyticsData.totalIncome ? analyticsData.totalIncome.toFixed(2) : '0.00'}
-            </p>
-            <p>
-              <strong>Total Expenses:</strong> ${analyticsData.totalExpenses ? analyticsData.totalExpenses.toFixed(2) : '0.00'}
-            </p>
-            <p>
-              <strong>Savings:</strong> ${analyticsData.savings ? analyticsData.savings.toFixed(2) : '0.00'}
+            <p className="ai-comment">
+              💬 <em>{comment}</em>
             </p>
           </div>
-          {analyticsData.expenseBreakdown &&
-            analyticsData.expenseBreakdown.length > 0 &&
-            renderExpenseBreakdown(analyticsData.expenseBreakdown)}
         </div>
-      ) : null}
-      {!loading && !error && !analyticsData && (
+      )}
+
+      {!loading && !error && !comment && (
         <p className="no-data">
-          No analytics data available. Please try refreshing or check your network connection.
+          AI поки не згенерував коментар. Спробуйте оновити.
         </p>
       )}
     </div>
@@ -81,18 +72,12 @@ const AIAnalytics = ({ initialData = null, fetchPredictions }) => {
 };
 
 AIAnalytics.propTypes = {
-  initialData: PropTypes.shape({
-    totalExpenses: PropTypes.number,
-    totalIncome: PropTypes.number,
-    savings: PropTypes.number,
-    expenseBreakdown: PropTypes.arrayOf(
-      PropTypes.shape({
-        category: PropTypes.string.isRequired,
-        amount: PropTypes.number.isRequired,
-      })
-    ),
-  }),
-  fetchPredictions: PropTypes.func.isRequired,
+  transactions: PropTypes.arrayOf(
+    PropTypes.shape({
+      amount: PropTypes.number.isRequired,
+      category: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default AIAnalytics;
