@@ -17,8 +17,9 @@ dotenv.config();
 
 const app = express();
 
-app.use('/ai', aiRoutes);
+
 app.use(express.json());
+app.use('/ai', aiRoutes);
 app.use(cors());
 app.use(morgan('dev'));
 

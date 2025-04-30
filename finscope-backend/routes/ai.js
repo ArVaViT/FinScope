@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const fetch = require('node-fetch'); // якщо ще не встановлено — додай
+const fetch = require('node-fetch');
 
 router.post('/analyze', async (req, res) => {
   try {
@@ -21,7 +21,7 @@ router.post('/analyze', async (req, res) => {
       return res.status(502).json({ error: 'AI service error', details: text });
     }
 
-    const data = await response.json(); // { comment: "..." }
+    const data = await response.json();
     return res.json(data);
 
   } catch (error) {
