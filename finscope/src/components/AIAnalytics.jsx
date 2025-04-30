@@ -8,6 +8,7 @@ const AIAnalytics = ({ transactions }) => {
   const [loading, setLoading] = useState(false);
 
   const fetchAIComment = useCallback(async () => {
+    console.log('📤 Надсилаємо транзакції в AI:', transactions);
     setError(null);
     setLoading(true);
     try {
@@ -18,13 +19,16 @@ const AIAnalytics = ({ transactions }) => {
       });
 
       if (!res.ok) {
+        console.error('❌ Помилка відповіді від бекенду:', res.status);
         throw new Error('AI error');
       }
 
       const data = await res.json();
+      console.log('✅ Отримано відповідь від AI:', data);
+
       setComment(data.comment || 'AI не повернув коментар.');
     } catch (err) {
-      console.error('AI fetch error:', err);
+      console.error('🔥 Помилка запиту до AI:', err);
       setError('Не вдалося отримати AI-аналітику. Спробуйте ще раз.');
     } finally {
       setLoading(false);
@@ -32,8 +36,11 @@ const AIAnalytics = ({ transactions }) => {
   }, [transactions]);
 
   useEffect(() => {
+    console.log('🚀 useEffect: перевіряємо transactions', transactions);
     if (transactions && transactions.length > 0) {
       fetchAIComment();
+    } else {
+      console.log('⚠️ Транзакції відсутні або пусті');
     }
   }, [transactions, fetchAIComment]);
 
