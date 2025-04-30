@@ -16,21 +16,23 @@ const aiRoutes = require('./routes/ai');
 dotenv.config();
 
 const app = express();
+const allowedOrigins = [
+  'https://www.officialfinscope.com',
+  'http://localhost:5173'
+];
 
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ['GET', 'POST', 'OPTIONS'],
+  credentials: true,
+}));
 
 app.use(express.json());
-app.use('/ai', aiRoutes);
-app.use(cors());
 app.use(morgan('dev'));
+app.use('/ai', aiRoutes);
 
-mongoose.connect(config.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.error('MongoDB connection error:', err));
-
-// Смонтировать маршруты для аутентификации и сброса пароля на один префикс /auth
 app.use('/auth', authRoutes);
 app.use('/auth', passwordRoutes);
-
 app.use('/profile', profileRoutes);
 app.use('/transactions', transactionsRoutes);
 app.use('/notifications', notificationsRoutes);
